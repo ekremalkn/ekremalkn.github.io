@@ -23,6 +23,10 @@
   --fixed-header-height: 4.5rem;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 /* ==== RESET HTML ==== */
 body {
   width: 100%;
@@ -88,19 +92,6 @@ button {
 }
 .nav_menu_link:hover {
   color: var(--primary-color);
-}
-.toggle_btn {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--lg-heading);
-  z-index: 4;
-}
-.nav_menu,
-.close_btn {
-  display: none;
-}
-.show {
-  right: 3% !important;
 }
 /* ====  WRAPPER ==== */
 .wrapper {
@@ -247,54 +238,9 @@ footer {
   margin-top: 8rem;
 }
 
-/* ==== MEDIA QURIES FOR RESPONSIVE DESIGN ==== */
-@media screen and (min-width: 768px) {
-  .toggle_btn {
-    display: none;
-  }
-  .nav_menu {
-    display: block;
-  }
-}
-
 @media screen and (max-width: 768px) {
   .logo h2 {
     font-size: 23px;
-  }
-  .nav_menu {
-    position: fixed;
-    width: 93%;
-    height: 100%;
-    display: block;
-    top: 2.5%;
-    right: -100%;
-    background-color: #fff;
-    padding: 3rem;
-    border-radius: 10px;
-    box-shadow: 0 0.5rem 1.5rem rgba(22, 28, 45, 0.1);
-    z-index: 50;
-    transition: 0.4s;
-  }
-  .nav_menu_list {
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 4rem;
-  }
-  .nav_menu_list .nav_menu_item {
-    margin: 1rem 0;
-  }
-  .nav_menu_item .nav_menu_link {
-    font-size: 18px;
-  }
-  .close_btn {
-    display: block;
-    position: absolute;
-    right: 10%;
-    font-size: 25px;
-    color: #50689e;
-  }
-  .close_btn:hover {
-    color: #000;
   }
   .wrapper {
     padding: 0 0.7rem;
