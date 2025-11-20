@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Video Kredi Hesaplayıcı</title>
+
+<style>
+
+    body { font-family: Arial, sans-serif; padding: 30px; background: #f5f5f5; }
+
+    h1 { color: #FF6F00; }
+
+    input, button { padding: 10px; font-size: 16px; margin: 5px 0; width: 100%; max-width: 300px; }
+
+    #result { background: #fff; padding: 15px; border-radius: 8px; margin-top: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+
+    .step { margin-bottom: 10px; }
+
+</style>
+
+</head>
+
+<body>
+
+
+
+<h1>Video Kredi Hesaplayıcı (%300 Net Kâr)</h1>
+
+
+
+<label for="cost">Video Maliyeti ($):</label>
+
+<input type="number" id="cost" placeholder="Örn: 0.30" step="0.01" min="0">
+
+
+
+<button onclick="calculateCredits()">Hesapla</button>
+
+
+
+<div id="result"></div>
+
+
+
+<script>
+
+function calculateCredits() {
+
+    const cost = parseFloat(document.getElementById('cost').value);
+
+    const netPerCredit = 0.07; // 1 kredi Apple sonrası net
+
+    if(isNaN(cost) || cost <= 0) {
+
+        document.getElementById('result').innerHTML = "<p>Lütfen geçerli bir maliyet girin.</p>";
+
+        return;
+
+    }
+
+
+
+    // 1️⃣ Gerekli kredi sayısı
+
+    const requiredCredits = Math.ceil((cost * 4) / netPerCredit);
+
+
+
+    // 2️⃣ Kullanıcının ödeyeceği brüt
+
+    const grossPayment = (requiredCredits * 0.10).toFixed(2);
+
+
+
+    // 3️⃣ Sana kalan net gelir
+
+    const netIncome = (requiredCredits * netPerCredit).toFixed(2);
+
+
+
+    // 4️⃣ Net kâr
+
+    const profit = (netIncome - cost).toFixed(2);
+
+
+
+    // 5️⃣ Kâr yüzdesi
+
+    const profitPercent = ((profit / cost) * 100).toFixed(0);
+
+
+
+    // Sonucu adım adım göster
+
+    document.getElementById('result').innerHTML = `
+
+        <div class="step"><strong>1️⃣ Video Maliyeti:</strong> $${cost}</div>
+
+        <div class="step"><strong>2️⃣ Gerekli Kredi Sayısı:</strong> ${requiredCredits} kredi</div>
+
+        <div class="step"><strong>3️⃣ Kullanıcının Ödeyeceği Brüt:</strong> $${grossPayment}</div>
+
+        <div class="step"><strong>4️⃣ Sana Kalan Net Gelir:</strong> $${netIncome}</div>
+
+        <div class="step"><strong>5️⃣ Net Kâr:</strong> $${profit} (${profitPercent}%)</div>
+
+    `;
+
+}
+
+</script>
+
+
+
+</body>
+
+</html>
